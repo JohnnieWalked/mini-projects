@@ -1,0 +1,29 @@
+/* base */
+@import './base/_variables.css';
+
+/* layouts */
+@import './layout/_sidebar.css';
+
+/* fonts */
+@import './../assets/fonts/google-sans/_google-font.css';
+
+* {
+  font-family: 'Google Sans', 'Arial';
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  gap: 2rem;
+  background-color: hsl(var(--background));
+  color: hsl(var(--text));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

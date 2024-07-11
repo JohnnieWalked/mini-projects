@@ -1,0 +1,106 @@
+aside {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  max-height: 100svh;
+  background-color: hsl(var(--primary));
+}
+
+aside .logo {
+  display: grid;
+  place-items: center;
+}
+
+aside .logo svg {
+  width: 160px;
+  height: 100%;
+  fill: hsl(var(--background));
+  transition: fill 2s linear;
+}
+
+aside .logo svg:hover {
+  fill: hsl(var(--accent));
+  transition: fill 0.3s ease-in-out;
+}
+
+aside nav ul {
+  --_list-item-height: 4rem;
+  --_padding-left: 3rem;
+
+  padding-left: var(--_padding-left);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  color: hsl(var(--primary));
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+aside nav ul li {
+  display: flex;
+  align-items: center;
+  height: var(--_list-item-height);
+  width: 100%;
+}
+
+aside nav ul li a {
+  position: relative;
+  width: fit-content;
+  mix-blend-mode: difference;
+}
+aside nav ul li a:before,
+aside nav ul li .active::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 0.1rem;
+  left: 0;
+  bottom: -0.1rem;
+  transform: scaleX(0);
+  background-color: hsl(var(--primary));
+  transition: transform 1s ease-in-out;
+  transform-origin: center;
+}
+aside nav ul li a:hover::before,
+aside nav ul li .active::before {
+  transform: scaleX(100%);
+  transition: transform 0.2s ease-in-out;
+}
+
+aside nav ul .sidebar-active-line {
+  position: absolute;
+  box-sizing: content-box;
+  content: '';
+  width: calc(100% - (var(--_padding-left) / 2));
+  height: var(--_list-item-height);
+  right: 0;
+  background-color: hsl(var(--background));
+
+  transition: top 0.5s ease;
+  border-radius: 100vw 0 0 100vw;
+}
+
+aside nav ul .sidebar-active-line::before,
+aside nav ul .sidebar-active-line::after {
+  --_border-radius: 2rem;
+
+  position: absolute;
+  content: '';
+  width: var(--_border-radius);
+  height: var(--_border-radius);
+  right: 0;
+  background-color: hsl(var(--primary));
+}
+
+aside nav ul .sidebar-active-line::before {
+  top: calc(var(--_border-radius) * -1);
+  box-shadow: 10px 10px 0 10px hsl(var(--background));
+  border-radius: 0 0 100vw 0;
+}
+aside nav ul .sidebar-active-line::after {
+  bottom: calc(var(--_border-radius) * -1);
+  box-shadow: 10px -10px 0 10px hsl(var(--background));
+  border-radius: 0 100vw 0 0;
+}
