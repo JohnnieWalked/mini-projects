@@ -1,0 +1,101 @@
+.game-descr {
+  --_gap: 5rem;
+  --_icon-size: 3.3rem;
+
+  display: grid;
+  grid-template-columns: 1fr var(--_gap) 1fr var(--_gap) 1fr;
+  place-items: center;
+  grid-template-areas:
+    'beginning divider1 step1 divider2 step2'
+    '. . . . divider5'
+    'win win win divider3 step3'
+    'lose lose lose divider4 step3';
+}
+
+.game-descr__header,
+.game-descr__step1,
+.game-descr__step2,
+.game-descr__step3,
+.game-descr__win,
+.game-descr__lose {
+  width: 100%;
+  height: 100%;
+  gap: 0.5rem;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 500;
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--primary));
+  text-align: center;
+
+  border-radius: 1rem;
+  box-shadow: 0px 5px 10px hsl(var(--background));
+}
+
+.game-descr__header {
+  grid-area: beginning;
+  text-align: start;
+  gap: 0rem;
+}
+.game-descr__step1 {
+  grid-area: step1;
+  align-items: center;
+}
+.game-descr__step2 {
+  grid-area: step2;
+}
+.game-descr__step3 {
+  grid-area: step3;
+}
+.game-descr__win {
+  grid-area: win;
+}
+.game-descr__lose {
+  grid-area: lose;
+}
+
+.game-descr__divider1,
+.game-descr__divider2,
+.game-descr__divider3,
+.game-descr__divider4,
+.game-descr__divider5 {
+  position: relative;
+  width: var(--_gap);
+  height: var(--_gap);
+  /* height: calc(var(--_gap) / 2); */
+}
+.game-descr__divider1 {
+  grid-area: divider1;
+}
+.game-descr__divider2 {
+  grid-area: divider2;
+}
+.game-descr__divider3 {
+  grid-area: divider3;
+}
+.game-descr__divider4 {
+  grid-area: divider4;
+}
+.game-descr__divider5 {
+  grid-area: divider5;
+}
+
+.gamefield {
+  display: grid;
+}
+
+.minesweeper-unopened-square {
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+
+  background-color: hsl(var(--minesweeper-unopened-square-bg));
+
+  border: 0.5rem solid;
+  border-top-color: hsl(var(--minesweeper-unopened-square-border-top));
+  border-left-color: hsl(var(--minesweeper-unopened-square-border-left));
+  border-right-color: hsl(var(--minesweeper-unopened-square-border-right));
+  border-bottom-color: hsl(var(--minesweeper-unopened-square-border-bottom));
+}

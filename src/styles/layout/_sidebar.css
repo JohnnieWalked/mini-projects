@@ -71,7 +71,6 @@ aside nav ul li .active::before {
 
 aside nav ul .sidebar-active-line {
   position: absolute;
-  box-sizing: content-box;
   content: '';
   width: calc(100% - (var(--_padding-left) / 2));
   height: var(--_list-item-height);

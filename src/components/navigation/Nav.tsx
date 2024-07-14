@@ -8,11 +8,11 @@ export default function Nav() {
   const location = useLocation();
   const [sibebarNavLine, setSidebarNavLine] = useState<number | null>(null);
 
+  /* move active navbar line */
   useEffect(() => {
     const currentPageIndex = PAGES_ARRAY.findIndex(
       (item) => item === location.pathname.replace('/', '')
     );
-    console.log(location.pathname);
     setSidebarNavLine((100 / PAGES_ARRAY.length) * currentPageIndex);
   }, [location.pathname]);
 
