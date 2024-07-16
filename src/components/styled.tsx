@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-type Colors = 'primary' | 'secondary' | 'accent' | 'background' | 'text';
+import type { Colors } from '../types';
 
 interface SectionBgColor {
   $bgColor?: Colors;
@@ -23,8 +22,8 @@ export namespace S {
   `;
   export const Section = styled.section<SectionBgColor>`
     background-color: ${({ $bgColor }) => `hsl(var(--${$bgColor}))`};
-    border-radius: 1rem;
     padding: 1.5rem;
+    border-radius: calc(1rem + 1.5rem);
   `;
 
   /* --------------------------------------------------------------------------------------------------------------------------------------- */
@@ -32,7 +31,7 @@ export namespace S {
   export const Button = styled.button``;
 
   export const Header = styled.h1`
-    font-size: clamp(1rem, 7vw, 2.5rem);
+    font-size: clamp(1rem, 7vw, 3rem);
     color: hsl(var(--accent));
   `;
   export const StyledHeader = styled(Header)<GradientProps>`
@@ -43,7 +42,7 @@ export namespace S {
   `;
 
   export const Subheader = styled.h2`
-    font-size: clamp(0.8rem, 5vw, 2rem);
+    font-size: clamp(0.8rem, 5vw, 2.2rem);
     color: hsl(var(--primary));
   `;
   export const StyledSubheader = styled(Subheader)<GradientProps>`

@@ -1,1 +1,8 @@
-export type Direction = 'top' | 'bottom' | 'left' | 'right';
+export type Colors =
+  | 'primary'
+  | 'secondary'
+  | 'accent'
+  | 'background'
+  | 'text'
+  | 'red'
+  | 'green';

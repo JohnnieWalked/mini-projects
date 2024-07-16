@@ -1,16 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
+/* assets and styles */
 import triangle from '../../../assets/icons/triangle.svg';
-import type { Direction } from '../../../types';
+import styled from 'styled-components';
 
 type DividerProps = {
   className: string;
-  direction: Direction;
+  angle: number;
 };
 
 const DividerWrapper = styled.div<{
   $backgroundSrc: string;
-  $direction: Direction;
+  $angle: number;
 }>`
   &::after {
     content: '';
@@ -22,9 +21,7 @@ const DividerWrapper = styled.div<{
     background: ${({ $backgroundSrc }) => `url(${$backgroundSrc}) repeat-x`};
     background-position: 0 calc(100% / 2);
     background-size: 20% 100%;
-    rotate: ${({ $direction }) => {
-      if ($direction === 'right') return '0deg';
-    }};
+    rotate: ${({ $angle }) => `${$angle}deg`};
     animation: animatedBackground 5s linear infinite;
     filter: invert(4%) sepia(10%) saturate(4490%) hue-rotate(329deg)
       brightness(94%) contrast(95%);
@@ -41,10 +38,10 @@ const DividerWrapper = styled.div<{
   }
 `;
 
-export default function Divider({ className, direction }: DividerProps) {
+export default function Divider({ className, angle }: DividerProps) {
   return (
     <DividerWrapper
-      $direction={direction}
+      $angle={angle}
       $backgroundSrc={triangle}
       className={className}
     />
