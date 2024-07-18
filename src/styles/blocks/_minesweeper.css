@@ -2,8 +2,12 @@
   --_gap: 5rem;
   --_icon-size: 3.3rem;
 
+  padding: 0 !important;
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr var(--_gap) 1fr var(--_gap) 1fr;
+  grid-template-columns:
+    auto var(--_gap) auto var(--_gap)
+    auto;
   grid-template-rows: repeat(4, minmax(calc(var(--_gap) / 2), auto));
   place-items: center;
   grid-template-areas:
@@ -29,19 +33,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-weight: 500;
-  color: hsl(var(--primary));
+  align-items: center;
+  color: hsl(var(--text));
   text-align: center;
-  font-size: clamp(1rem, 6vw, 1.2rem);
+  border: 3px outset hsl(var(--accent));
 
-  background-color: hsl(var(--secondary));
+  background-color: hsla(var(--primary), 0.2);
   border-radius: 1rem;
   box-shadow: 0px 5px 10px hsl(var(--background));
 }
 
 .game-descr__header {
   grid-area: beginning;
-  text-align: start;
+  align-items: center;
+  text-align: center;
   gap: 0rem;
 }
 .game-descr__step1 {
@@ -55,9 +60,12 @@
   grid-area: step3;
 }
 .game-descr__win {
+  background-color: hsla(var(--accent), 0.2);
   grid-area: win;
 }
 .game-descr__lose {
+  background-color: hsla(var(--accent), 0.2);
+
   grid-area: lose;
 }
 
@@ -134,7 +142,7 @@
   height: 100%;
   top: 50%;
   left: 200%;
-  animation: 8s linear infinite mouse-move;
+  animation: 8s ease-in-out infinite mouse-move;
 }
 .mouse svg {
   width: 100%;

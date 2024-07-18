@@ -1,23 +1,33 @@
+import { useState } from 'react';
+
 /* components */
 import GameField from '../features/minesweeper/components/GameField';
 import Divider from '../features/minesweeper/components/Divider';
 
 /* styles */
 import { S } from '../components/styled';
-import { useEffect, useState } from 'react';
 
 export default function MinesweeperPage() {
   return (
     <S.Container>
-      <S.StyledHeader $firstColor="accent" $secondColor="text" $deg={70}>
+      <S.StyledHeader
+        style={{ display: 'flex', alignSelf: 'center' }}
+        $firstColor="text"
+        $secondColor="accent"
+        $deg={120}
+      >
         Minesweeper
       </S.StyledHeader>
-      <S.Section className="game-descr" $bgColor="primary">
+      <S.TitleWrapper>
+        <S.Subheader>Rules</S.Subheader>
+        <S.TitleUnderline $color="accent"></S.TitleUnderline>
+      </S.TitleWrapper>
+      <S.Section className="game-descr" /* $bgColor="primary" $opacity={0.2} */>
         <div className="game-descr__header">
           <S.StyledSubheader
             $firstColor="text"
-            $secondColor="primary"
-            $deg={90}
+            $secondColor="accent"
+            $deg={120}
           >
             How to play?
           </S.StyledSubheader>
@@ -59,13 +69,21 @@ export default function MinesweeperPage() {
           Choose "Flags" to mark squares as potentials mines.
         </div>
         <div className="game-descr__win">
-          <S.StyledSubheader $firstColor="text" $secondColor="green" $deg={90}>
+          <S.StyledSubheader
+            $firstColor="text"
+            $secondColor="accent"
+            $deg={120}
+          >
             Victory
           </S.StyledSubheader>
           You win if you uncover all safe squares without hitting a mine.
         </div>
         <div className="game-descr__lose">
-          <S.StyledSubheader $firstColor="text" $secondColor="red" $deg={90}>
+          <S.StyledSubheader
+            $firstColor="text"
+            $secondColor="accent"
+            $deg={120}
+          >
             Defeat
           </S.StyledSubheader>
           Clicking a mine explodes all hidden mines, revealing the board, and
@@ -77,6 +95,10 @@ export default function MinesweeperPage() {
         <Divider angle={180} className="game-descr__divider4" />
         <Divider angle={90} className="game-descr__divider5" />
       </S.Section>
+      <S.TitleWrapper>
+        <S.Subheader>Game</S.Subheader>
+        <S.TitleUnderline $color="accent"></S.TitleUnderline>
+      </S.TitleWrapper>
       <S.Section className="game-settings" $bgColor="primary">
         <GameField />
         <div>

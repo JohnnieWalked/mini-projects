@@ -23,8 +23,8 @@ const DividerWrapper = styled.div<{
     background-size: 20% 100%;
     rotate: ${({ $angle }) => `${$angle}deg`};
     animation: animatedBackground 5s linear infinite;
-    filter: invert(4%) sepia(10%) saturate(4490%) hue-rotate(329deg)
-      brightness(94%) contrast(95%);
+    filter: invert(70%) sepia(52%) saturate(320%) hue-rotate(191deg)
+      brightness(95%) contrast(84%);
   }
 
   @keyframes animatedBackground {

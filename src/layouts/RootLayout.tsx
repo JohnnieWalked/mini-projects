@@ -5,9 +5,9 @@ import Nav from '../components/navigation/Nav';
 export default function RootLayout() {
   return (
     <>
-      <aside>
+      <div className="navigation-bar">
         <Nav />
-      </aside>
+      </div>
 
       <div className="container">
         <Outlet />

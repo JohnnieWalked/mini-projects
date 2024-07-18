@@ -1,4 +1,4 @@
-aside {
+.navigation-bar {
   display: flex;
   flex-direction: column;
   position: sticky;
@@ -7,24 +7,24 @@ aside {
   background-color: hsl(var(--primary));
 }
 
-aside .logo {
+.navigation-bar .logo {
   display: grid;
   place-items: center;
 }
 
-aside .logo svg {
+.navigation-bar .logo svg {
   width: 160px;
   height: 100%;
   fill: hsl(var(--background));
   transition: fill 2s linear;
 }
 
-aside .logo svg:hover {
-  fill: hsl(var(--accent));
+.navigation-bar .logo svg:hover {
+  fill: hsl(var(--text));
   transition: fill 0.3s ease-in-out;
 }
 
-aside nav ul {
+.navigation-bar nav ul {
   --_list-item-height: 4rem;
   --_padding-left: 3rem;
 
@@ -35,23 +35,23 @@ aside nav ul {
   list-style: none;
   color: hsl(var(--primary));
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.125rem, 1.5rem);
 }
 
-aside nav ul li {
+.navigation-bar nav ul li {
   display: flex;
   align-items: center;
   height: var(--_list-item-height);
   width: 100%;
 }
 
-aside nav ul li a {
+.navigation-bar nav ul li a {
   position: relative;
   width: fit-content;
   mix-blend-mode: difference;
 }
-aside nav ul li a:before,
-aside nav ul li .active::before {
+.navigation-bar nav ul li a:before,
+.navigation-bar nav ul li .active::before {
   position: absolute;
   content: '';
   width: 100%;
@@ -63,13 +63,13 @@ aside nav ul li .active::before {
   transition: transform 1s ease-in-out;
   transform-origin: center;
 }
-aside nav ul li a:hover::before,
-aside nav ul li .active::before {
+.navigation-bar nav ul li a:hover::before,
+.navigation-bar nav ul li .active::before {
   transform: scaleX(100%);
   transition: transform 0.2s ease-in-out;
 }
 
-aside nav ul .sidebar-active-line {
+.navigation-bar nav ul .sidebar-active-line {
   position: absolute;
   content: '';
   width: calc(100% - (var(--_padding-left) / 2));
@@ -81,8 +81,8 @@ aside nav ul .sidebar-active-line {
   border-radius: 100vw 0 0 100vw;
 }
 
-aside nav ul .sidebar-active-line::before,
-aside nav ul .sidebar-active-line::after {
+.navigation-bar nav ul .sidebar-active-line::before,
+.navigation-bar nav ul .sidebar-active-line::after {
   --_border-radius: 2rem;
 
   position: absolute;
@@ -93,12 +93,12 @@ aside nav ul .sidebar-active-line::after {
   background-color: hsl(var(--primary));
 }
 
-aside nav ul .sidebar-active-line::before {
+.navigation-bar nav ul .sidebar-active-line::before {
   top: calc(var(--_border-radius) * -1);
   box-shadow: 10px 10px 0 10px hsl(var(--background));
   border-radius: 0 0 100vw 0;
 }
-aside nav ul .sidebar-active-line::after {
+.navigation-bar nav ul .sidebar-active-line::after {
   bottom: calc(var(--_border-radius) * -1);
   box-shadow: 10px -10px 0 10px hsl(var(--background));
   border-radius: 0 100vw 0 0;

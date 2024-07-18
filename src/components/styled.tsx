@@ -3,6 +3,7 @@ import type { Colors } from '../types';
 
 interface SectionBgColor {
   $bgColor?: Colors;
+  $opacity?: number;
 }
 interface GradientProps {
   $deg: number;
@@ -11,7 +12,7 @@ interface GradientProps {
 }
 
 const getGradient = (props: GradientProps) =>
-  `linear-gradient(${props.$deg}deg in hsl shorter hue, hsl(var(--${props.$firstColor})), hsl(var(--${props.$secondColor})))`;
+  `linear-gradient(${props.$deg}deg, hsl(var(--${props.$firstColor})), hsl(var(--${props.$secondColor})))`;
 
 export namespace S {
   export const Container = styled.div`
@@ -21,9 +22,17 @@ export namespace S {
     padding: 1rem;
   `;
   export const Section = styled.section<SectionBgColor>`
-    background-color: ${({ $bgColor }) => `hsl(var(--${$bgColor}))`};
-    padding: 1.5rem;
-    border-radius: calc(1rem + 1.5rem);
+    background-color: ${({ $bgColor, $opacity = 1 }) =>
+      `hsla(var(--${$bgColor}), ${$opacity})`};
+
+    padding: 1rem;
+    border-radius: 1rem;
+  `;
+  export const TitleWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
   `;
 
   /* --------------------------------------------------------------------------------------------------------------------------------------- */
@@ -31,7 +40,8 @@ export namespace S {
   export const Button = styled.button``;
 
   export const Header = styled.h1`
-    font-size: clamp(1rem, 7vw, 3rem);
+    width: fit-content;
+    font-size: clamp(1.25rem, 2rem, 2.5rem);
     color: hsl(var(--accent));
   `;
   export const StyledHeader = styled(Header)<GradientProps>`
@@ -41,8 +51,9 @@ export namespace S {
     -webkit-text-fill-color: transparent;
   `;
 
-  export const Subheader = styled.h2`
-    font-size: clamp(0.8rem, 5vw, 2.2rem);
+  export const Subheader = styled.h2<{ $color?: Colors }>`
+    width: fit-content;
+    font-size: clamp(1rem, 1.5rem, 2rem);
     color: hsl(var(--primary));
   `;
   export const StyledSubheader = styled(Subheader)<GradientProps>`
@@ -52,11 +63,18 @@ export namespace S {
     -webkit-text-fill-color: transparent;
   `;
 
+  export const TitleUnderline = styled.span<{ $color: Colors }>`
+    width: 100%;
+    height: 0.3rem;
+    background-color: ${(props) => `hsl(var(--${props.$color}))`};
+    clip-path: polygon(0 0, 100% 0, 100% 40%, 13% 40%, 10% 100%, 0 100%);
+    transition: background-color 0.3s ease-in-out;
+  `;
+
   export const H3Header = styled.h3`
     font-size: clamp(0.9rem, 5vw, 2rem);
     color: hsl(var(--primary));
   `;
-
   export const Paragraph = styled.p`
     padding-bottom: 0.5rem;
 
