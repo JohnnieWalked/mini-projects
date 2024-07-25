@@ -2,7 +2,6 @@
   --_gap: 5rem;
   --_icon-size: 3.3rem;
 
-  padding: 0 !important;
   position: relative;
   display: grid;
   grid-template-columns:
@@ -36,7 +35,7 @@
   align-items: center;
   color: hsl(var(--text));
   text-align: center;
-  border: 3px outset hsl(var(--accent));
+  border: 3px outset hsla(var(--primary), 0.2);
 
   background-color: hsla(var(--primary), 0.2);
   border-radius: 1rem;
@@ -59,13 +58,20 @@
 .game-descr__step3 {
   grid-area: step3;
 }
+.game-descr__step3 .flag-example {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  place-items: center;
+}
 .game-descr__win {
   background-color: hsla(var(--accent), 0.2);
+  border-color: hsl(var(--accent));
+
   grid-area: win;
 }
 .game-descr__lose {
-  background-color: hsla(var(--accent), 0.2);
-
+  background-color: hsla(var(--secondary), 0.3);
+  border-color: hsl(var(--secondary));
   grid-area: lose;
 }
 
@@ -97,69 +103,4 @@
 
 .gamefield {
   display: grid;
-}
-
-.minesweeper-opened-square,
-.minesweeper-unopened-square {
-  position: relative;
-  width: var(--_icon-size);
-  height: var(--_icon-size);
-}
-
-.minesweeper-unopened-square {
-  background-color: hsl(var(--minesweeper-square-bg));
-
-  border: 0.35rem solid;
-  border-top-color: hsl(var(--minesweeper-unopened-square-border-top));
-  border-left-color: hsl(var(--minesweeper-unopened-square-border-left));
-  border-right-color: hsl(var(--minesweeper-unopened-square-border-right));
-  border-bottom-color: hsl(var(--minesweeper-unopened-square-border-bottom));
-}
-
-.animated-minesweeper-opened-square {
-  animation: 8s linear infinite open-square;
-}
-@keyframes open-square {
-  0%,
-  29% {
-    border-top-color: hsl(var(--minesweeper-unopened-square-border-top));
-    border-left-color: hsl(var(--minesweeper-unopened-square-border-left));
-    border-right-color: hsl(var(--minesweeper-unopened-square-border-right));
-    border-bottom-color: hsl(var(--minesweeper-unopened-square-border-bottom));
-    background: hsl(var(--minesweeper-square-bg));
-  }
-  30%,
-  100% {
-    background: url('../../assets/icons/1.svg') center no-repeat;
-    background-size: 100% 70%;
-    border-color: hsl(var(--minesweeper-unopened-square-border-right));
-  }
-}
-
-.mouse {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 50%;
-  left: 200%;
-  animation: 8s ease-in-out infinite mouse-move;
-}
-.mouse svg {
-  width: 100%;
-  height: 100%;
-}
-#mouse-outer {
-  fill: hsl(var(--background));
-}
-#mouse-inner {
-  fill: hsl(var(--text));
-}
-@keyframes mouse-move {
-  0% {
-    left: 200%;
-  }
-  20%,
-  100% {
-    left: 50%;
-  }
 }

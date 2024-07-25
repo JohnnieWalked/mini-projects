@@ -10,9 +10,14 @@ interface GradientProps {
   $firstColor: Colors;
   $secondColor: Colors;
 }
+interface TextColor {
+  $color?: Colors;
+}
 
 const getGradient = (props: GradientProps) =>
   `linear-gradient(${props.$deg}deg, hsl(var(--${props.$firstColor})), hsl(var(--${props.$secondColor})))`;
+const getColor = (props: TextColor) =>
+  props.$color ? `hsl(var(--${props.$color}))` : `hsl(var(--text))`;
 
 export namespace S {
   export const Container = styled.div`
@@ -24,9 +29,8 @@ export namespace S {
   export const Section = styled.section<SectionBgColor>`
     background-color: ${({ $bgColor, $opacity = 1 }) =>
       `hsla(var(--${$bgColor}), ${$opacity})`};
-
+    border-radius: calc(0.5rem + 1rem);
     padding: 1rem;
-    border-radius: 1rem;
   `;
   export const TitleWrapper = styled.div`
     display: flex;
@@ -39,10 +43,10 @@ export namespace S {
 
   export const Button = styled.button``;
 
-  export const Header = styled.h1`
+  export const Header = styled.h1<TextColor>`
     width: fit-content;
     font-size: clamp(1.25rem, 2rem, 2.5rem);
-    color: hsl(var(--accent));
+    color: ${getColor};
   `;
   export const StyledHeader = styled(Header)<GradientProps>`
     background-image: ${getGradient};
@@ -51,10 +55,10 @@ export namespace S {
     -webkit-text-fill-color: transparent;
   `;
 
-  export const Subheader = styled.h2<{ $color?: Colors }>`
+  export const Subheader = styled.h2<TextColor>`
     width: fit-content;
     font-size: clamp(1rem, 1.5rem, 2rem);
-    color: hsl(var(--primary));
+    color: ${getColor};
   `;
   export const StyledSubheader = styled(Subheader)<GradientProps>`
     background-image: ${getGradient};
@@ -67,7 +71,7 @@ export namespace S {
     width: 100%;
     height: 0.3rem;
     background-color: ${(props) => `hsl(var(--${props.$color}))`};
-    clip-path: polygon(0 0, 100% 0, 100% 40%, 13% 40%, 10% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 40%, 13% 40%, 7% 100%, 0 100%);
     transition: background-color 0.3s ease-in-out;
   `;
 
