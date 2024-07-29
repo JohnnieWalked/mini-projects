@@ -41,7 +41,11 @@ export namespace S {
 
   /* --------------------------------------------------------------------------------------------------------------------------------------- */
 
-  export const Button = styled.button``;
+  export const Button = styled.button`
+    width: fit-content;
+    font-size: 1rem;
+    padding: 0.5rem;
+  `;
 
   export const Header = styled.h1<TextColor>`
     width: fit-content;

@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { sleep } from '../../../helpers';
-import { TbFlag3Filled } from 'react-icons/tb';
+
+/* rtk */
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { minesweeperSliceActions } from '../../../store/slices/minesweeperSlice';
 import { RootState } from '../../../store';
+
+/* icons and styles */
+import { TbFlag3Filled } from 'react-icons/tb';
+import styled from 'styled-components';
+
+/* helpers */
+import { sleep } from '../../../helpers';
 
 type StyledSquareParams = {
   $isOpen: boolean;
@@ -56,10 +62,6 @@ const StyledSquare = styled.button<StyledSquareParams>`
     border: 0.2rem inset hsla(var(--primary), 0.1);
     background-color: hsla(var(--primary), 0.3);
   }
-  &:focus-visible {
-    outline: dotted 3px cyan;
-    outline-offset: 3px;
-  }
   &:hover {
     filter: brightness(120%);
   }
@@ -86,7 +88,9 @@ export default function Square({
 }: SquareProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isFlagged, setIsFlagged] = useState(false);
-  const { gameOver } = useAppSelector((state: RootState) => state.minesweeper);
+  const { gameOver, mode } = useAppSelector(
+    (state: RootState) => state.minesweeper
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -100,19 +104,34 @@ export default function Square({
   async function handleClick(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) {
+    /* left click */
     if (e.type === 'click') {
+      /* in case FLAG mode */
+      if (mode === 'flag') {
+        setIsFlagged(!isFlagged);
+        return;
+      }
+
+      /* in case DIG mode */
       if (isFlagged === true) return;
       setIsOpen(true);
-      if (hasBomb && !animationSquare)
+
+      /* if user click on squares that are a part of a game */
+      if (hasBomb && !animationSquare) {
         dispatch(minesweeperSliceActions.setGameOver(true));
+      }
+
+      /* if user click on squares that located in GUIDE section */
+      if (animationSquare) {
+        await sleep(3000);
+        setIsOpen(false);
+      }
     }
+
+    /* right click */
     if (e.type === 'contextmenu') {
       e.preventDefault();
       setIsFlagged(!isFlagged);
-    }
-    if (animationSquare) {
-      await sleep(3000);
-      setIsOpen(false);
     }
   }
 

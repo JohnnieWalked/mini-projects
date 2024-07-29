@@ -8,6 +8,7 @@ import Square from '../features/minesweeper/components/Square';
 /* styles */
 import { S } from '../components/styled';
 import { FaBomb } from 'react-icons/fa';
+import ToggleModeButton from '../features/minesweeper/components/ToggleModeButton';
 
 export default function MinesweeperPage() {
   return (
@@ -56,22 +57,26 @@ export default function MinesweeperPage() {
           squares surrounding it.
         </div>
         <div className="game-descr__step3">
-          <div className="flag-example">
-            <Square hasBomb animationSquare={true}>
-              <FaBomb />
-            </Square>
-            <Square hasBomb animationSquare={true}>
-              <FaBomb />
-            </Square>
-            <Square openedExample animationSquare={true}>
-              3
-            </Square>
-            <Square hasBomb animationSquare={true}>
-              <FaBomb />
-            </Square>
+          <div className="flag-example-wrapper">
+            <div className="flag-example">
+              <Square hasBomb animationSquare={true}>
+                <FaBomb />
+              </Square>
+              <Square hasBomb animationSquare={true}>
+                <FaBomb />
+              </Square>
+              <Square openedExample animationSquare={true}>
+                3
+              </Square>
+              <Square hasBomb animationSquare={true}>
+                <FaBomb />
+              </Square>
+            </div>
+            <ToggleModeButton />
           </div>
           Choose "Flags" to mark squares as potentials mines. You can use left
-          click or select special button with flag icon.
+          click or toggle special button. Icon which is located inside this
+          button represents current click-mode (reveal square or place flag).
         </div>
         <div className="game-descr__win">
           <S.StyledSubheader

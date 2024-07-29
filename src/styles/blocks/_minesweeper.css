@@ -58,6 +58,11 @@
 .game-descr__step3 {
   grid-area: step3;
 }
+.game-descr__step3 .flag-example-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
 .game-descr__step3 .flag-example {
   display: grid;
   grid-template-columns: repeat(2, auto);

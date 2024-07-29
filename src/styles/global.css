@@ -33,6 +33,10 @@ a {
   text-decoration: none;
 }
 
+button:focus-visible {
+  box-shadow: 0 0 0 3px hsla(var(--accent)), 0 0 0 6px hsl(var(--secondary));
+}
+
 @media (max-width: 768px) {
   #root {
     display: flex;
